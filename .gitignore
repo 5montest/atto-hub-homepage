@@ -23,6 +23,9 @@
 # misc
 .DS_Store
 *.pem
+repomix-output.xml
+firebase.json
+.firebaserc
 
 # debug
 npm-debug.log*
