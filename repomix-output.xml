@@ -1,0 +1,1264 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.editorconfig
+.firebaserc
+.gitignore
+app/favicon.ico
+app/globals.css
+app/layout.tsx
+app/page.tsx
+components/Features.tsx
+components/Footer.tsx
+components/Hero.tsx
+components/PhoneMockup.tsx
+components/ProductShowcase.tsx
+components/Roadmap.tsx
+components/UseCases.tsx
+docs/layout_simplification/implementation_plan.md
+docs/layout_simplification/task.md
+docs/layout_simplification/walkthrough.md
+docs/refining_brand_voice/implementation_plan.md
+docs/refining_brand_voice/task.md
+docs/refining_brand_voice/walkthrough.md
+eslint.config.mjs
+firebase.json
+next.config.ts
+package.json
+postcss.config.mjs
+public/file.svg
+public/globe.svg
+public/next.svg
+public/screenshots/ato-create-mobile.png
+public/screenshots/ato-home-mobile.png
+public/vercel.svg
+public/window.svg
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".editorconfig">
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+</file>
+
+<file path=".firebaserc">
+{
+  "projects": {
+    "default": "ato-prod-486805"
+  }
+}
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="app/globals.css">
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fbfbf9;
+  --color-foreground: #2c363f;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f0f2f0;
+
+  --color-brand: #4a5c7a;
+  --color-brand-deep: #2c3a52;
+  --color-brand-soft: #eaf0fb;
+  --color-brand-border: #d7e0ed;
+  --color-mint: #6b9e89;
+  --color-mint-soft: #ecf5f1;
+  --color-amber: #e5b05c;
+  --color-amber-soft: #fbf4e8;
+  --color-amber-deep: #966a2e;
+  --color-ink-soft: #64707d;
+
+  --font-sans: var(--font-rounded);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    color: var(--color-foreground);
+    background: radial-gradient(circle at 0% 0%, #dbe5ff 0%, #fbfbf9 44%),
+      radial-gradient(circle at 100% 10%, #d7fff4 0%, transparent 35%), var(--color-background);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), var(--font-rounded), sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .soft-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(74, 92, 122, 0.08);
+    box-shadow: 0 20px 40px -20px rgba(44, 54, 63, 0.05);
+  }
+
+  .hero-grid {
+    background-image: linear-gradient(rgba(74, 92, 122, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 92, 122, 0.1) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(circle at 50% 20%, black 40%, transparent 90%);
+  }
+
+  .gradient-tag {
+    background: var(--color-brand);
+    color: white;
+    box-shadow: 0 8px 24px -8px rgba(74, 92, 122, 0.4);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  a.gradient-tag:hover,
+  button.gradient-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -10px rgba(74, 92, 122, 0.5);
+  }
+
+  .section-wrap {
+    width: min(1120px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+}
+</file>
+
+<file path="app/layout.tsx">
+import type { Metadata } from "next";
+import { M_PLUS_Rounded_1c, Sora } from "next/font/google";
+import "./globals.css";
+
+const rounded = M_PLUS_Rounded_1c({
+  variable: "--font-rounded",
+  weight: ["400", "500", "700", "800"],
+  subsets: ["latin"],
+});
+
+const sora = Sora({
+  variable: "--font-display",
+  weight: ["500", "700", "800"],
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Atto Hub | やわらかく進むプロダクトスタジオ",
+  description:
+    "Atoをはじめ、待ち時間や現場の不便をやわらかく解決するプロダクトを開発する Atto Hub のコーポレートサイトです。",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ja">
+      <body className={`${rounded.variable} ${sora.variable} antialiased`}>{children}</body>
+    </html>
+  );
+}
+</file>
+
+<file path="app/page.tsx">
+import Features from "@/components/Features";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import ProductShowcase from "@/components/ProductShowcase";
+import Roadmap from "@/components/Roadmap";
+import UseCases from "@/components/UseCases";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen text-foreground space-y-20 sm:space-y-32 pb-20 sm:pb-32">
+      <Hero />
+      <UseCases />
+      <Features />
+      <ProductShowcase />
+      <Roadmap />
+      <Footer />
+    </main>
+  );
+}
+</file>
+
+<file path="components/Features.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { Compass, Feather, ShieldCheck } from "lucide-react";
+
+const principles = [
+  {
+    icon: Feather,
+    title: "ゆるく使える設計",
+    description:
+      "説明を読まなくても使い始められる導線を最優先に。現場で迷わないUIを、過不足なく設計します。",
+    tone: "text-[var(--color-brand)]",
+  },
+  {
+    icon: Compass,
+    title: "先に進める実装",
+    description:
+      "小さく作って早く検証し、必要な改善に集中。仮説と実装のループを止めない開発を重視します。",
+    tone: "text-[var(--color-mint)]",
+  },
+  {
+    icon: ShieldCheck,
+    title: "安心して運用できる基盤",
+    description:
+      "運用ルール、権限、監視まで含めて設計。使い続けるほど価値が出る、堅実な構成を積み上げます。",
+    tone: "text-amber-600",
+  },
+];
+
+export default function Features() {
+  return (
+    <section id="vision" className="px-4 py-20">
+      <div className="section-wrap">
+        <div className="mb-10 max-w-2xl">
+          <p className="text-sm font-bold text-[var(--color-brand)]">DESIGN PRINCIPLES</p>
+          <h2 className="mt-2 text-3xl font-extrabold sm:text-5xl">使う人のリズムを崩さない。</h2>
+          <p className="mt-4 text-[var(--color-ink-soft)] leading-relaxed">
+            Atto Hub がつくるのは、派手さより「続けて使える体験」。
+            現場のテンポを止めないことを判断基準に、デザインと実装を繋ぎます。
+          </p>
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.2 } },
+          }}
+          className="grid gap-6 md:grid-cols-12 items-start"
+        >
+          {principles.map((item, index) => {
+            const Icon = item.icon;
+            const colSpans = ["md:col-span-4", "md:col-span-4 md:mt-12", "md:col-span-4 md:mt-6"];
+
+            return (
+              <motion.article
+                key={item.title}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "spring", stiffness: 50, damping: 20 }
+                  }
+                }}
+                className={`soft-panel rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-2 ${colSpans[index]}`}
+              >
+                <div className={`-ml-2 -mt-2 mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm ${item.tone}`}>
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-bold tracking-tight">{item.title}</h3>
+                <p className="mt-4 text-base leading-[1.8] text-[var(--color-ink-soft)]">
+                  {item.description}
+                </p>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/Footer.tsx">
+export default function Footer() {
+  return (
+    <footer className="border-t border-[var(--color-brand-border)] bg-white/75 px-4 py-10 backdrop-blur">
+      <div className="section-wrap flex flex-col items-center justify-between gap-4 text-sm text-[var(--color-ink-soft)] sm:flex-row">
+        <div>
+          <p className="font-bold text-[var(--color-foreground)]">Atto Hub</p>
+          <p className="mt-1 text-xs">現場の不便を、やわらかくほどく。</p>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-5">
+          <a
+            href="https://ato.atto-hub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:text-[var(--color-brand)]"
+          >
+            Ato
+          </a>
+          <a href="https://ato.atto-hub.com/terms" className="transition hover:text-[var(--color-brand)]">
+            利用規約
+          </a>
+          <a href="https://ato.atto-hub.com/privacy" className="transition hover:text-[var(--color-brand)]">
+            プライバシー
+          </a>
+        </div>
+
+        <p className="text-xs">© {new Date().getFullYear()} Atto Hub</p>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="components/Hero.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+
+const stats = [
+  { label: "アプローチ", value: "現場主義・共に歩む" },
+  { label: "デザイン", value: "迷わせない、説明書不要のUI" },
+  { label: "開発体制", value: "小さく作って、早く検証する" },
+];
+
+export default function Hero() {
+  return (
+    <section className="relative overflow-hidden px-4 pb-20 pt-8 sm:pt-10">
+      <div className="pointer-events-none absolute inset-0 hero-grid" />
+      <div className="section-wrap relative z-10">
+        <div className="mb-14 flex items-center justify-between">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 shadow-sm ring-1 ring-[var(--color-brand-border)]">
+            <div className="grid h-8 w-8 place-items-center rounded-xl gradient-tag font-bold">a</div>
+            <span className="text-sm font-semibold text-[var(--color-ink-soft)]">Atto Hub</span>
+          </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            type: "spring",
+            stiffness: 60,
+            damping: 15,
+            mass: 1.2,
+            restDelta: 0.001
+          }}
+          className="mx-auto max-w-4xl text-left"
+        >
+          <div className="mb-8 inline-flex w-fit items-center gap-2 rounded-full bg-[var(--color-brand-soft)] px-4 py-1.5 text-xs font-bold text-[var(--color-brand-deep)]">
+            <Sparkles className="h-4 w-4" />
+            現場起点のプロダクトスタジオ
+          </div>
+
+          <h1 className="text-5xl font-extrabold leading-[1.15] text-[var(--color-foreground)] sm:text-7xl">
+            現場の不便を、
+            <br />
+            <span className="text-[var(--color-brand)]">やわらかくほどく。</span>
+          </h1>
+
+          <p className="mt-8 max-w-2xl whitespace-pre-line text-lg leading-relaxed text-[var(--color-ink-soft)] sm:text-xl">
+            Atto Hub は、現場や日常にある小さな摩擦をほどくプロダクトスタジオです。
+            わかりやすいUIと堅実な運用設計を土台に、使うほどなじむ道具を現場とともに育てます。
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="#products"
+              className="inline-flex items-center gap-2 rounded-full gradient-tag px-8 py-4 text-sm font-bold"
+            >
+              プロダクトを見る
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#vision"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-brand-border)] bg-white px-8 py-4 text-sm font-bold text-[var(--color-brand-deep)] transition hover:border-[var(--color-brand)] hover:bg-[var(--color-brand-soft)]"
+            >
+              私たちについて
+            </a>
+          </div>
+
+          <div className="mt-20 grid gap-8 border-t border-slate-100 pt-10 sm:grid-cols-3 sm:border-t-0 sm:pt-0">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-xs font-bold text-[var(--color-ink-soft)] opacity-80">{stat.label}</p>
+                <p className="mt-1 text-lg font-extrabold leading-relaxed text-[var(--color-brand)]">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/PhoneMockup.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { Clock, QrCode, ScanLine, User } from "lucide-react";
+
+export default function PhoneMockup({
+  className = "",
+  imageSrc,
+}: {
+  className?: string;
+  imageSrc?: string;
+}) {
+  return (
+    <div className={`relative mx-auto w-[280px] sm:w-[320px] ${className}`}>
+      <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[8px] border-slate-900 bg-white shadow-2xl">
+        <div className="absolute left-1/2 top-0 z-20 h-7 w-32 -translate-x-1/2 rounded-b-2xl bg-slate-900" />
+
+        <div className="flex h-12 w-full items-center justify-between px-6 pt-2">
+          <span className="text-[10px] font-medium text-slate-900">9:41</span>
+          <div className="flex gap-1.5">
+            <div className="h-2.5 w-2.5 rounded-full bg-slate-900/20" />
+            <div className="h-2.5 w-2.5 rounded-full bg-slate-900/20" />
+            <div className="h-2.5 w-4 rounded-full bg-slate-900/20" />
+          </div>
+        </div>
+
+        {imageSrc ? (
+          <div className="h-full w-full bg-slate-50">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageSrc}
+              alt="App Screenshot"
+              className="h-full w-full object-cover object-top"
+            />
+          </div>
+        ) : (
+          <div className="flex h-full flex-col bg-slate-50">
+            <div className="flex items-center justify-between px-6 pb-6 pt-2">
+              <div className="flex items-center gap-2">
+                <div className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--color-brand)] font-bold text-white">
+                  a
+                </div>
+                <span className="text-lg font-bold text-slate-800">Ato</span>
+              </div>
+              <div className="grid h-8 w-8 place-items-center rounded-full border border-slate-100 bg-white shadow-sm">
+                <User className="h-4 w-4 text-slate-400" />
+              </div>
+            </div>
+
+            <div className="px-4">
+              <div className="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+                <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+                  <div className="flex items-center gap-2 text-slate-500">
+                    <Clock className="h-4 w-4" />
+                    <span className="text-xs font-semibold">待ち組数</span>
+                  </div>
+                  <span className="text-sm font-bold text-slate-800">あと5組</span>
+                </div>
+
+                <div className="text-center">
+                  <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Your Number
+                  </span>
+                  <span className="block text-5xl font-black tracking-tight text-[var(--color-brand)]">12</span>
+                </div>
+
+                <div className="mt-6 flex justify-center">
+                  <div className="relative grid place-items-center rounded-xl bg-slate-900 p-3 text-white">
+                    <QrCode className="h-24 w-24 stroke-[1.5]" />
+                    <div className="absolute inset-0 grid place-items-center">
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="h-20 w-20 rounded-lg border-2 border-[var(--color-brand)]"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-center text-[10px] font-medium text-slate-400">
+                  呼び出し時にこの画面を見せるだけ
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-auto p-4 pb-8">
+              <div className="flex gap-3">
+                <div className="flex-1 rounded-2xl bg-[var(--color-brand)] p-4 text-white shadow-[0_14px_26px_-14px_rgba(74,92,122,0.55)]">
+                  <div className="mb-1 grid h-8 w-8 place-items-center rounded-full bg-white/20">
+                    <ScanLine className="h-4 w-4" />
+                  </div>
+                  <p className="text-xs font-medium opacity-80">Check In</p>
+                  <p className="font-bold">呼び出す</p>
+                </div>
+                <div className="flex-1 rounded-2xl bg-white p-4 text-slate-600 shadow-sm ring-1 ring-slate-100">
+                  <div className="mb-1 grid h-8 w-8 place-items-center rounded-full bg-slate-100">
+                    <Clock className="h-4 w-4" />
+                  </div>
+                  <p className="text-xs font-medium opacity-60">History</p>
+                  <p className="font-bold text-slate-800">履歴</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 z-30 rounded-[2.5rem] bg-gradient-to-tr from-white/20 to-transparent opacity-50" />
+    </div>
+  );
+}
+</file>
+
+<file path="components/ProductShowcase.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowUpRight, Clock3, Layers3, Smartphone } from "lucide-react";
+import PhoneMockup from "./PhoneMockup";
+
+const products = [
+  {
+    id: "ato",
+    label: "PRODUCT 01",
+    name: "Ato",
+    tagline: "ゆるい順番待ちシステム",
+    description:
+      "アプリ不要、ログイン不要。現場ですぐ使える導線と、管理者の運用しやすさを両立したプロダクトです。小規模イベントから店舗利用まで、軽やかに導入できます。",
+    features: [
+      { label: "導入準備", value: "最短3分", icon: Clock3 },
+      { label: "ゲスト側準備", value: "不要", icon: Smartphone },
+      { label: "運用モード", value: "拡張可", icon: Layers3 },
+    ],
+    href: "https://ato.atto-hub.com",
+    imageSrc: "/screenshots/ato-home-mobile.png",
+    imageClassName: "-rotate-3 origin-top shadow-[0_30px_55px_-28px_rgba(74,92,122,0.65)] transition-transform duration-700 hover:rotate-0",
+  },
+];
+
+export default function ProductShowcase() {
+  return (
+    <section id="products" className="px-4 py-16 sm:py-24">
+      <div className="section-wrap mx-auto max-w-5xl">
+        <div className="mb-12 max-w-3xl">
+          <p className="text-sm font-bold text-[var(--color-brand)]">PRODUCTS</p>
+          <h2 className="mt-2 text-3xl font-extrabold sm:text-5xl">Atto Hub が手がけるプロダクト</h2>
+          <p className="mt-4 leading-relaxed text-[var(--color-ink-soft)]">
+            特定の業種に閉じず、現場ごとの摩擦に合わせて道具をつくる。小さく始めて検証し、価値が出たものを継続的に育てます。
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          {products.map((product, index) => (
+            <motion.article
+              key={product.id}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: index * 0.08 }}
+              className="soft-panel overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white to-slate-50 ring-1 ring-[var(--color-brand-border)]"
+            >
+              <div className="grid items-center gap-12 p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
+                <div className="space-y-8">
+                  <div>
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-soft)] px-3 py-1 text-xs font-bold text-[var(--color-brand-deep)]">
+                      <Layers3 className="h-4 w-4" />
+                      {product.label}
+                    </div>
+                    <h3 className="text-4xl font-extrabold tracking-tight sm:text-5xl">{product.name}</h3>
+                    <p className="mt-2 text-lg font-bold text-[var(--color-ink-soft)]">{product.tagline}</p>
+                  </div>
+
+                  <p className="leading-relaxed text-[var(--color-ink-soft)]">{product.description}</p>
+
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    {product.features.map((f) => (
+                      <div key={f.label}>
+                        <div className="mb-1 flex items-center gap-1.5 text-[var(--color-ink-soft)]">
+                          <f.icon className="h-4 w-4 opacity-70" />
+                          <span className="text-xs font-bold">{f.label}</span>
+                        </div>
+                        <p className="text-lg font-extrabold text-[var(--color-brand)]">{f.value}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a
+                    href={product.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full gradient-tag px-8 py-4 text-sm font-bold"
+                  >
+                    {product.name}を開く
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+
+                <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+                  <div className="relative aspect-square w-full lg:aspect-auto lg:h-[500px]">
+                    <div className="absolute left-1/2 top-1/2 -z-10 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-[var(--color-brand-soft)] to-white blur-3xl" />
+
+                    <div className="flex h-full items-start justify-center pt-10 sm:pt-16 lg:pt-20">
+                      <PhoneMockup imageSrc={product.imageSrc} className={product.imageClassName} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/Roadmap.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+
+const roadmap = [
+  {
+    phase: "PHASE 1",
+    title: "単一の不便を解消する",
+    detail:
+      "待ち時間や煩雑な入力など、目の前のストレスを単機能で素早く解決。小さく確実に効果を出せる道具から始めます。",
+  },
+  {
+    phase: "PHASE 2",
+    title: "業務をななめにつなぐ",
+    detail:
+      "個別ツールと既存システムを横断して接続し、分断された運用フローをなめらかに統合。現場全体の前進を支えます。",
+  },
+  {
+    phase: "PHASE 3",
+    title: "新しい視点をもたらす",
+    detail:
+      "蓄積データとAIアシストを活用し、属人的な判断を仕組み化。次の打ち手を提示できる状態へ育てます。",
+  },
+];
+
+export default function Roadmap() {
+  return (
+    <section id="roadmap" className="px-4 py-16 sm:py-24">
+      <div className="section-wrap mx-auto max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="mb-12 text-center"
+        >
+          <span className="text-sm font-bold tracking-wider text-[var(--color-brand)]">ROADMAP</span>
+          <h2 className="mt-3 text-3xl font-extrabold text-[var(--color-foreground)] sm:text-4xl">
+            Atto Hub の進化を描く
+            <br className="sm:hidden" />
+            3つのフェーズ
+          </h2>
+        </motion.div>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {roadmap.map((step, index) => (
+            <motion.div
+              key={step.phase}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="group relative overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-[var(--color-brand-border)] transition hover:shadow-md"
+            >
+              <div className="mb-4 inline-block rounded-full bg-[var(--color-brand-soft)] px-3 py-1 text-[11px] font-extrabold tracking-wide text-[var(--color-mint)]">
+                {step.phase}
+              </div>
+              <h3 className="mb-3 text-lg font-bold text-slate-900 transition-colors group-hover:text-[var(--color-brand)]">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-ink-soft)]">{step.detail}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/UseCases.tsx">
+"use client";
+
+import { motion } from "framer-motion";
+import { Layers3, ShieldCheck, Users } from "lucide-react";
+
+const cases = [
+  {
+    icon: Users,
+    title: "オフラインの接客現場",
+    desc: "受付・案内・呼び出しが集中する場所で、現場のテンポを崩さずに対応できる仕組みを設計。ゲスト体験とスタッフ負荷を同時に整えます。",
+    color: "bg-[var(--color-brand-soft)] text-[var(--color-brand)]",
+  },
+  {
+    icon: Layers3,
+    title: "ブラウザ上の業務フロー",
+    desc: "分断された画面遷移や手作業の入力をつなぎ、日々のオペレーションを前に進む流れへ再設計。小さな自動化から段階的に改善します。",
+    color: "bg-[var(--color-amber-soft)] text-[var(--color-amber-deep)]",
+  },
+  {
+    icon: ShieldCheck,
+    title: "バックオフィスの運用管理",
+    desc: "台帳更新や確認作業など、属人化しやすい運用を見える化。権限やルールを含めて再構築し、継続できる業務基盤に育てます。",
+    color: "bg-[var(--color-mint-soft)] text-[var(--color-mint)]",
+  },
+];
+
+export default function UseCases() {
+  return (
+    <section className="bg-white px-4 py-12 sm:py-20">
+      <div className="section-wrap">
+        <div className="mb-12 text-center">
+          <span className="mb-3 inline-block rounded-full bg-[var(--color-brand-soft)] px-3 py-1 text-xs font-bold text-[var(--color-ink-soft)]">
+            FOCUS AREAS
+          </span>
+          <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
+            <span className="mb-1 block text-lg font-medium text-slate-400">特定業種ではなく、課題領域で向き合う</span>
+            Atto Hub が取り組む3つのフィールド
+          </h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {cases.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-slate-100"
+              >
+                <div
+                  className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${item.color}`}
+                >
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-bold text-slate-800">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="docs/layout_simplification/implementation_plan.md">
+# Implementation Plan - Layout Simplification
+
+## Goal
+Reduce visual clutter and fix broken layouts by adopting a "1 Message per Section" philosophy. Utilize vertical scroll to tell a story rather than cramming information into a single view.
+
+## User Review Required
+- **Section Split**: `ProductShowcase` was split into two distinct visual blocks (Product Intro vs Roadmap).
+
+## Proposed Changes
+
+### 1. Structural Changes (`page.tsx` & Components)
+- **Increase Spacing**: Added `space-y-32` (large vertical gap) between sections in `page.tsx`.
+- **Remove "Dashboard" Layouts**: Switched to single-column or balanced grids that encourage scrolling.
+
+### 2. Component: `ProductShowcase.tsx` -> Split Approach
+- **Block A: Ato Introduction** (`ProductShowcase.tsx`)
+  - Focus: "Ato" concept + Visuals.
+  - Layout: Large visual (Screen/Phone) on one side, Text on the other.
+  - Fix: Resolved `PhoneMockup` overlapping issues.
+- **Block B: Roadmap** (`Roadmap.tsx`)
+  - Focus: The organic growth phases (Seed/Sprout/Harvest).
+  - Layout: A dedicated section below the product intro.
+
+### 3. Component: `Hero.tsx`
+- **De-clutter**: Cleaned up the "Stats" display to be less boxy.
+- **Spacing**: Increased headline and copy spacing.
+
+## Verification Plan
+- **Scroll Test**: The page now flows narratively with distinct pauses between sections.
+- **Layout Check**: No overlapping elements.
+
+## Completion
+All planned changes have been implemented and verified as of 2026-02-15.
+- Layout simplified and spaced out.
+- ProductShowcase split into Product/Roadmap.
+- Stats copy refined for balance.
+- Screenshot integrated into PhoneMockup.
+</file>
+
+<file path="docs/layout_simplification/task.md">
+# Layout Simplification & Refinement
+
+- [x] **Analysis**
+  - [x] Review user feedback on "clutter" and "broken screenshots".
+  - [x] Identify layout bottlenecks in `ProductShowcase` and `Hero`.
+
+- [x] **Structural Simplification (1 Message = 1 Section)**
+  - [x] **App Structure (`page.tsx`)**: Increase vertical rhythm.
+  - [x] **Product Showcase Split**:
+    - [x] Isolate "Ato Product Intro" as a standalone focus.
+    - [x] Isolate "Roadmap (Promise)" as a standalone focus.
+  - [x] **Hero Refinement**: Ensure clarity and space.
+
+- [x] **Visual Repair**
+  - [x] Fix `PhoneMockup` positioning and overlapping issues in `ProductShowcase`.
+  - [x] Ensure "Screenshot" display is clean and stable.
+
+- [x] **Final Polish**
+  - [x] **Cropping Phone Mockup**: Adjust `ProductShowcase` to show only top half of phone.
+  - [x] **Screenshot Integration**: Restore split layout but use user's preferred screenshot inside `PhoneMockup`.
+  - [x] **Copy Refinement**: Balance abstract/concrete tone in Hero stats.
+  - [x] Verify "Scroll Experience" (rhythm and flow).
+
+- [x] **Studio Branding Refinement**
+  - [x] **Tone Check**: Remove overly dramatic copy ("Scorching sun...").
+  - [x] **Scope Adjustment**: Emphasize "Atto Hub = Studio" (Multi-product future), not just "Ato".
+  - [x] **Header Cleanup**: Remove top "Ato" button.
+</file>
+
+<file path="docs/layout_simplification/walkthrough.md">
+# Walkthrough - Layout Simplification
+
+Refined the website layout to follow a "1 Message per Section" philosophy and adjusted visuals for better focus.
+
+## Changes
+
+### 1. Global Layout (`page.tsx`)
+- **Vertical Rhythm**: Added large vertical gaps (`space-y-32`) between sections.
+- **Effect**: Encourages scrolling and focus on single topics.
+
+### 2. New Component: `Roadmap.tsx`
+- Extracted Roadmap to a standalone component.
+- **Design**: Card-based, organic growth phases (Seed/Sprout/Harvest).
+
+### 3. Refined `ProductShowcase.tsx`
+- **Focus**: Dedicated to "Ato" product intro.
+- **Layout**: 2-column layout.
+- **Visuals**:
+  - **Phone Mockup**: Aligned to the top with padding (`pt-20`), cropping the bottom part to focus on the interface header/main content.
+  - **Screenshot**: Integrated the user-provided screenshot (`/screenshots/ato-home-mobile.png`) directly into the phone frame, maintaining the clean, tilted design.
+
+### 4. Refined `Hero.tsx`
+- **De-clutter**: Simplified stats display.
+- **Copy Refinements**:
+  - **Stats**: "最短3分、アプリ不要" (Concrete Benefit), "日々改善、現場とともに" (Concrete Action).
+  - **Studio Focus**: Updated introduction to "Atto Hub is a product studio (not just Ato)... continue to create tools that balance lightness..."
+  - **Header**: Removed the "Atoへ" button to avoid over-pushing a single product at the studio level.
+
+### 5. Refined `UseCases.tsx`
+- **Tone**: Removed overly dramatic "Scorching sun/Shouting" description, replacing it with a more grounded "Guest anxiety & workload burden" description.
+
+## Verification
+- **Visuals**: The page maintains the clean, split layout with correct screenshot and balanced copy.
+</file>
+
+<file path="docs/refining_brand_voice/implementation_plan.md">
+# Implementation Plan - Brand Voice Refinement
+
+## Goal
+To transform the website from a "Generic IT Startup" look into a "Human-Centric Partner" presence that resonates with the muddy reality of frontline operations.
+
+## User Review Required
+- **Voice Change**: The shift from "PoC/Setup 3min" to "Walking Together/Coffee Break Setup" is a significant tonal shift. Please review the specific Japanese wording proposed below.
+- **Design Change**: Replacing the static image in ProductShowcase with the dynamic `PhoneMockup` component.
+
+## Proposed Changes
+
+### Component: Hero Section (`Hero.tsx`)
+- **Stats Update**:
+  - `現在フェーズ: PoC` -> `現在地: 共に歩む` (Walking Together)
+  - `導入準備: 最短3分` -> `導入: お茶を淹れる間に` (While brewing tea)
+  - `公開ステータス: 進行中` -> `ステータス: 毎日、少しずつ` (Daily Improvements)
+- **Copy Update**:
+  - Emphasize "warmth" and "relief" over "efficiency".
+
+### Component: Product Showcase (`ProductShowcase.tsx`)
+- **Roadmap Refactoring**:
+  - Change "NOW / NEXT / LATER" to "始まり / 広がり / 結実" (Seed / Sprout / Harvest metaphors).
+  - Rewrite descriptions to be promises of "scenery change" rather than functional modules.
+- **Phone Mockup Integration**:
+  - Import `<PhoneMockup />`.
+  - Replace the current `figure` block.
+  - Apply `transform: -rotate-1` and `shadow-2xl` (with colored shadow) to create the "living tool" feel.
+
+### Component: Phone Mockup (`PhoneMockup.tsx`)
+- Ensure it accepts `className` props for easy styling/tilting from the parent.
+
+## Verification Plan
+- **Visual Check**: Ensure the new text fits well and the tilt doesn't break layout on mobile.
+- **Tone Check**: Read the new copy aloud to ensure it sounds like a partner, not a vendor.
+</file>
+
+<file path="docs/refining_brand_voice/task.md">
+# Brand Voice & Design Refinement
+
+- [x] **Analysis**
+  - [x] Analyze `Hero.tsx`, `ProductShowcase.tsx`, `PhoneMockup.tsx`.
+  - [x] Confirm `PhoneMockup` usage.
+
+- [x] **Phase 1: Hero Section (The Greeting)**
+  - [x] Update `stats` in `Hero.tsx` to "human scale" metrics.
+  - [x] Refine Hero copy to emphasize "partnership" and "warmth".
+
+- [x] **Phase 2: Product Showcase (The Promise)**
+  - [x] Rewrite `roadmap` in `ProductShowcase.tsx` with narrative/organic phases.
+  - [x] Replace inline mobile mockup with `<PhoneMockup />`.
+  - [x] Apply organic design (tilt, soft shadow) to the mockup.
+
+- [x] **Phase 3: Final Approach**
+  - [x] Verify visual consistency.
+  - [x] Review against "Generic SaaS" checklist.
+</file>
+
+<file path="docs/refining_brand_voice/walkthrough.md">
+# Walkthrough - Brand Voice Refinement
+
+Shifted the website tone from "Generic SaaS" to "Organic Partner".
+
+## Changes
+
+### Hero Section (`Hero.tsx`)
+- **Stats**: Replaced functional metrics with human-centric ones.
+  - `現在フェーズ: PoC` -> `現在地: 共に歩む`
+  - `導入準備: 最短3分` -> `導入: お茶を淹れる間に`
+  - `公開ステータス: 進行中` -> `ステータス: 毎日、少しずつ`
+- **Goal**: To show that we are "walking together" with the user, not just selling a tool.
+
+### Product Showcase (`ProductShowcase.tsx`)
+- **Roadmap**: Renamed phases to an organic lifecycle.
+  - `NOW` -> `始まり` (Beginning/Seed)
+  - `NEXT` -> `広がり` (Expansion/Sprout)
+  - `LATER` -> `結実` (Fruition/Harvest)
+  - Rewrote descriptions to focus on solving "stress" and "building assets" rather than just "features".
+- **Visuals**:
+  - Integrated `<PhoneMockup />` component.
+  - Applied `rotate-[-2deg]` and `shadow-2xl` with a soft indigo tint to create a "living object" feel.
+  - This replaces the rigorous/straight screenshot with a playful, organic element.
+
+### Phone Mockup (`PhoneMockup.tsx`)
+- Updated to accept `className` for flexible styling/positioning.
+
+## Verification Results
+- **Visuals**: The tilted phone mockup breaks the grid rigidity, adding the requested "human touch".
+- **Tone**: The text now reads closer to a partner's voice ("walking together") rather than a vendor's spec sheet.
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="firebase.json">
+{
+  "hosting": {
+    "public": ".next/server/app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "frameworksBackend": {
+      "region": "asia-northeast1"
+    }
+  }
+}
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+};
+
+export default nextConfig;
+</file>
+
+<file path="package.json">
+{
+  "name": "homepage",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "preview:static": "npx serve out -p 4173",
+    "lint": "eslint",
+    "deploy:cloudflare": "npm run build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.34.0",
+    "lucide-react": "^0.564.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="public/file.svg">
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg>
+</file>
+
+<file path="public/globe.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+</file>
+
+<file path="public/next.svg">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg>
+</file>
+
+<file path="public/vercel.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+</file>
+
+<file path="public/window.svg">
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+</file>
+
+<file path="README.md">
+# homepage (Cloudflare Pages)
+
+このディレクトリは `atto-hub.com` のコーポレートサイトです。
+Cloudflare Pages への静的配信を前提にしています。
+
+## 1. ローカル確認
+
+```bash
+npm install
+npm run lint
+npm run build
+```
+
+`build` 成功後に `out/` が生成されます。
+
+静的出力をローカル確認する場合:
+
+```bash
+npm run preview:static
+```
+
+## 2. GitHub に push
+
+このディレクトリは独立リポジトリで運用する想定です。
+
+```bash
+git init
+git add .
+git commit -m "chore: prepare cloudflare pages deployment"
+git branch -M main
+git remote add origin <YOUR_GITHUB_REPO_URL>
+git push -u origin main
+```
+
+## 3. Cloudflare Pages 設定
+
+Cloudflare Dashboard -> `Workers & Pages` -> `Create application` -> `Pages` -> `Connect to Git` で対象リポジトリを選択し、以下を設定:
+
+- Framework preset: `Next.js` (or `None`)
+- Build command: `npm run build`
+- Build output directory: `out`
+- Root directory: `/`
+
+保存して初回デプロイを実行します。
+
+## 4. カスタムドメイン接続
+
+`Custom domains` で希望ドメイン（例: `www.atto-hub.com`）を追加し、Cloudflare 側の案内に従って DNS を設定します。
+
+## 5. デプロイ後チェック
+
+- トップページ表示
+- モバイル表示
+- OGP表示（X/LINE/Facebookのデバッガで再取得）
+- 404ページ挙動
+
+## メモ
+
+- このプロジェクトは `next.config.ts` で `output: "export"` を設定済みです。
+- `ato` 本体（Firebase）とは分離して運用してください。
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+</files>
