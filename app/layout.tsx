@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Atto Hub | やわらかく進むプロダクトスタジオ",
   description:
     "Atoをはじめ、待ち時間や現場の不便をやわらかく解決するプロダクトを開発する Atto Hub のコーポレートサイトです。",
+  other: {
+    "google-adsense-account": "ca-pub-4817529592769049",
+  },
 };
 
 export default function RootLayout({
