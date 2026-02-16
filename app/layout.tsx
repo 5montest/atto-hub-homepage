@@ -30,6 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817529592769049"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body className={`${rounded.variable} ${sora.variable} antialiased`}>{children}</body>
     </html>
   );
