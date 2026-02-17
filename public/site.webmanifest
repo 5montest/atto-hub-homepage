@@ -1,0 +1,22 @@
+{
+  "name": "Atto Hub",
+  "short_name": "Atto Hub",
+  "description": "Atto Hub develops practical products like Ato to reduce friction in on-site operations and everyday workflows.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbfbf9",
+  "theme_color": "#4a5c7a",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

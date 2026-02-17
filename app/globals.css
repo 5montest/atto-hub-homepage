@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @theme {
   --color-background: #fbfbf9;
@@ -17,7 +17,8 @@
   --color-amber-deep: #966a2e;
   --color-ink-soft: #64707d;
 
-  --font-sans: var(--font-rounded);
+  --font-sans: var(--font-rounded), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI",
+    "Yu Gothic", "Meiryo", system-ui, sans-serif;
 }
 
 @layer base {
@@ -26,6 +27,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     color: var(--color-foreground);
     background: radial-gradient(circle at 0% 0%, #dbe5ff 0%, #fbfbf9 44%),
       radial-gradient(circle at 100% 10%, #d7fff4 0%, transparent 35%), var(--color-background);
@@ -36,7 +38,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-display), var(--font-rounded), sans-serif;
+    font-family: var(--font-sans);
     letter-spacing: -0.02em;
   }
 }

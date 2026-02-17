@@ -1,6 +1,3 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
 import { Layers3, ShieldCheck, Users } from "lucide-react";
 
 const cases = [
@@ -29,35 +26,29 @@ export default function UseCases() {
     <section className="bg-white px-4 py-12 sm:py-20">
       <div className="section-wrap">
         <div className="mb-12 text-center">
-          <span className="mb-3 inline-block rounded-full bg-[var(--color-brand-soft)] px-3 py-1 text-xs font-bold text-[var(--color-ink-soft)]">
+          <span className="mb-3 inline-block rounded-full bg-[var(--color-brand-soft)] px-3 py-1 text-xs font-bold text-[var(--color-brand-deep)]">
             FOCUS AREAS
           </span>
           <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
-            <span className="mb-1 block text-lg font-medium text-slate-400">特定業種ではなく、課題領域で向き合う</span>
+            <span className="mb-1 block text-lg font-medium text-slate-600">特定業種ではなく、課題領域で向き合う</span>
             Atto Hub が取り組む3つのフィールド
           </h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {cases.map((item, i) => {
+          {cases.map((item) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-lg hover:shadow-slate-100"
               >
-                <div
-                  className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${item.color}`}
-                >
+                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${item.color}`}>
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-slate-800">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

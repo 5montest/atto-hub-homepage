@@ -1,6 +1,3 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
 import { ArrowUpRight, Clock3, Layers3, Smartphone } from "lucide-react";
 import PhoneMockup from "./PhoneMockup";
 
@@ -36,13 +33,9 @@ export default function ProductShowcase() {
         </div>
 
         <div className="space-y-8">
-          {products.map((product, index) => (
-            <motion.article
+          {products.map((product) => (
+            <article
               key={product.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.08 }}
               className="soft-panel overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white to-slate-50 ring-1 ring-[var(--color-brand-border)]"
             >
               <div className="grid items-center gap-12 p-8 sm:p-12 lg:grid-cols-2 lg:gap-16">
@@ -91,7 +84,7 @@ export default function ProductShowcase() {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>

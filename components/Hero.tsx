@@ -1,6 +1,3 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 const stats = [
@@ -21,18 +18,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{
-            type: "spring",
-            stiffness: 60,
-            damping: 15,
-            mass: 1.2,
-            restDelta: 0.001
-          }}
-          className="mx-auto max-w-4xl text-left"
-        >
+        <div className="mx-auto max-w-4xl text-left">
           <div className="mb-8 inline-flex w-fit items-center gap-2 rounded-full bg-[var(--color-brand-soft)] px-4 py-1.5 text-xs font-bold text-[var(--color-brand-deep)]">
             <Sparkles className="h-4 w-4" />
             現場起点のプロダクトスタジオ
@@ -73,7 +59,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

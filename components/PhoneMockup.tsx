@@ -1,6 +1,4 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { Clock, QrCode, ScanLine, User } from "lucide-react";
 
 export default function PhoneMockup({
@@ -25,12 +23,14 @@ export default function PhoneMockup({
         </div>
 
         {imageSrc ? (
-          <div className="h-full w-full bg-slate-50">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="relative h-full w-full bg-slate-50">
+            <Image
               src={imageSrc}
               alt="App Screenshot"
-              className="h-full w-full object-cover object-top"
+              fill
+              loading="lazy"
+              sizes="(max-width: 640px) 280px, 320px"
+              className="object-cover object-top"
             />
           </div>
         ) : (
@@ -68,11 +68,7 @@ export default function PhoneMockup({
                   <div className="relative grid place-items-center rounded-xl bg-slate-900 p-3 text-white">
                     <QrCode className="h-24 w-24 stroke-[1.5]" />
                     <div className="absolute inset-0 grid place-items-center">
-                      <motion.div
-                        animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="h-20 w-20 rounded-lg border-2 border-[var(--color-brand)]"
-                      />
+                      <div className="h-20 w-20 rounded-lg border-2 border-[var(--color-brand)] animate-pulse" />
                     </div>
                   </div>
                 </div>

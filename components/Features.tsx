@@ -1,6 +1,3 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
 import { Compass, Feather, ShieldCheck } from "lucide-react";
 
 const principles = [
@@ -40,44 +37,27 @@ export default function Features() {
           </p>
         </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: { opacity: 1, transition: { staggerChildren: 0.2 } },
-          }}
-          className="grid gap-6 md:grid-cols-12 items-start"
-        >
+        <div className="grid items-start gap-6 md:grid-cols-12">
           {principles.map((item, index) => {
             const Icon = item.icon;
             const colSpans = ["md:col-span-4", "md:col-span-4 md:mt-12", "md:col-span-4 md:mt-6"];
 
             return (
-              <motion.article
+              <article
                 key={item.title}
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { type: "spring", stiffness: 50, damping: 20 }
-                  }
-                }}
                 className={`soft-panel rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-2 ${colSpans[index]}`}
               >
-                <div className={`-ml-2 -mt-2 mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm ${item.tone}`}>
+                <div
+                  className={`-ml-2 -mt-2 mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm ${item.tone}`}
+                >
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tight">{item.title}</h3>
-                <p className="mt-4 text-base leading-[1.8] text-[var(--color-ink-soft)]">
-                  {item.description}
-                </p>
-              </motion.article>
+                <p className="mt-4 text-base leading-[1.8] text-[var(--color-ink-soft)]">{item.description}</p>
+              </article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
