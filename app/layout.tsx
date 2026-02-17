@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { M_PLUS_Rounded_1c } from "next/font/google";
-import AdSenseScriptLoader from "@/components/AdSenseScriptLoader";
 import "./globals.css";
 
 const siteUrl = "https://atto-hub.com";
@@ -101,7 +100,6 @@ export default function RootLayout({
       <head />
       <body className={`${rounded.className} ${rounded.variable} antialiased`}>
         {children}
-        <AdSenseScriptLoader />
       </body>
     </html>
   );
