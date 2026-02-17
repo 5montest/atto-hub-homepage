@@ -81,9 +81,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  other: {
-    "google-adsense-account": "ca-pub-4817529592769049",
-  },
 };
 
 export const viewport: Viewport = {
