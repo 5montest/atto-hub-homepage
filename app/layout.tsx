@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { M_PLUS_Rounded_1c } from "next/font/google";
+import AdSenseScriptLoader from "@/components/AdSenseScriptLoader";
 import "./globals.css";
 
 const siteUrl = "https://atto-hub.com";
@@ -10,9 +11,10 @@ const siteDescription =
 
 const rounded = M_PLUS_Rounded_1c({
   variable: "--font-rounded",
-  weight: ["400", "500", "700", "800", "900"],
+  weight: ["400", "500", "700"],
   display: "swap",
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -96,15 +98,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4817529592769049"
-          crossOrigin="anonymous"
-        />
-      </head>
+      <head />
       <body className={`${rounded.className} ${rounded.variable} antialiased`}>
         {children}
+        <AdSenseScriptLoader />
       </body>
     </html>
   );
