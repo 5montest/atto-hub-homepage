@@ -1,20 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { M_PLUS_Rounded_1c } from "next/font/google";
 import "./globals.css";
 
 const siteUrl = "https://atto-hub.com";
-const siteName = "Atto Hub";
-const siteTitle = "Atto Hub | Real-World Product Studio";
+const siteName = "ATENELA";
+const siteTitle = "ATENELA（アテネラ）| 個人開発と順番待ちツール Ato";
 const siteDescription =
-  "Atto Hub develops practical products like Ato to reduce friction in on-site operations and everyday workflows.";
+  "ATENELA（アテネラ）は個人開発の活動名です。順番待ちツール Ato と、イベントでの運用実績を紹介します。";
 
-const rounded = M_PLUS_Rounded_1c({
-  variable: "--font-rounded",
-  weight: ["400", "500", "700"],
-  display: "swap",
-  subsets: ["latin"],
-  preload: false,
-});
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,11 +23,11 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   keywords: [
-    "Atto Hub",
+    "ATENELA",
     "Ato",
-    "product studio",
-    "UX",
-    "operations design",
+    "アテネラ",
+    "個人開発",
+    "順番待ち",
     "queue management",
   ],
   authors: [{ name: siteName, url: siteUrl }],
@@ -60,7 +53,7 @@ export const metadata: Metadata = {
         url: "/ogp.png",
         width: 1200,
         height: 630,
-        alt: "Atto Hub",
+        alt: "ATENELA",
       },
     ],
   },
@@ -84,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbfbf9",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -95,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head />
-      <body className={`${rounded.className} ${rounded.variable} antialiased`}>
+      <body>
         {children}
       </body>
     </html>

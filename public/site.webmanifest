@@ -1,12 +1,12 @@
 {
-  "name": "Atto Hub",
-  "short_name": "Atto Hub",
-  "description": "Atto Hub develops practical products like Ato to reduce friction in on-site operations and everyday workflows.",
+  "name": "ATENELA",
+  "short_name": "ATENELA",
+  "description": "ATENELA（アテネラ）は個人でアプリを開発しています。順番待ちツール Ato を紹介します。",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#fbfbf9",
-  "theme_color": "#4a5c7a",
+  "background_color": "#ffffff",
+  "theme_color": "#244dcc",
   "icons": [
     {
       "src": "/icon-192.png",

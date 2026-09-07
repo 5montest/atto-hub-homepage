@@ -1,60 +1,31 @@
-﻿# homepage (Cloudflare Pages)
+# ATENELA
 
-このディレクトリは `atto-hub.com` のコーポレートサイトです。
-Cloudflare Pages への静的配信を前提にしています。
+個人開発の活動と順番待ちツール Ato を紹介するサイト。Next.js の静的書き出しで Cloudflare Pages に配信します。
 
-## 1. ローカル確認
+## ローカル確認
 
-```bash
-npm install
-npm run lint
-npm run build
+```sh
+npm ci
+npm run dev
 ```
 
-`build` 成功後に `out/` が生成されます。
+## 検証と静的書き出し
 
-静的出力をローカル確認する場合:
-
-```bash
+```sh
+npm run lint
+npm run build
 npm run preview:static
 ```
 
-## 2. GitHub に push
+出力先は `out/`。Cloudflare Pages のビルドコマンドは `npm run build`、公開ディレクトリは `out` です。
 
-このディレクトリは独立リポジトリで運用する想定です。
+## コンテンツ
 
-```bash
-git init
-git add .
-git commit -m "chore: prepare cloudflare pages deployment"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
-```
+- `app/page.tsx`: 自己紹介、Ato、MFTでの利用記録、名前の由来。
+- `app/globals.css`: レスポンシブレイアウト。
+- `app/layout.tsx`: SEO・共有用メタデータ。
+- `scripts/generate-brand-assets.ps1`: Windows / System.Drawing でアイコンとOGPを再生成。
 
-## 3. Cloudflare Pages 設定
+MFTの記録は所有者から提供された内容（ジェラート試食ブース、最大約10組待ち、2日間終了まで運用）に基づきます。開催年や主催者の推薦は追加していません。
 
-Cloudflare Dashboard -> `Workers & Pages` -> `Create application` -> `Pages` -> `Connect to Git` で対象リポジトリを選択し、以下を設定:
-
-- Framework preset: `Next.js` (or `None`)
-- Build command: `npm run build`
-- Build output directory: `out`
-- Root directory: `/`
-
-保存して初回デプロイを実行します。
-
-## 4. カスタムドメイン接続
-
-`Custom domains` で希望ドメイン（例: `www.atto-hub.com`）を追加し、Cloudflare 側の案内に従って DNS を設定します。
-
-## 5. デプロイ後チェック
-
-- トップページ表示
-- モバイル表示
-- OGP表示（X/LINE/Facebookのデバッガで再取得）
-- 404ページ挙動
-
-## メモ
-
-- このプロジェクトは `next.config.ts` で `output: "export"` を設定済みです。
-- `ato` 本体（Firebase）とは分離して運用してください。
+ブランド名はATENELAに変更しています。新ドメインは未指定のため、canonical・sitemapは既存の `https://atto-hub.com`、Atoへのリンクは `https://ato.atto-hub.com` です。ドメイン移行時は `app/layout.tsx`、`app/page.tsx`、`public/robots.txt`、`public/sitemap.xml` を更新してください。
